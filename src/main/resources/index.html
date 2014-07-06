@@ -1,6 +1,6 @@
 <html lang="en" ng-app="porterApp">
 <head>
-    <title>Weekly Status Report</title>
+    <title>Porter - WSR tool</title>
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="img/favicon.png" />
     <link rel="stylesheet" href="css/bootstrap.css" />
@@ -20,11 +20,11 @@
         <tr style="height: 50px">
             <td colspan="2" align="center">
                 <form action="logout" method="post">
-                    <span align="center" style="font-size: 32px; color: seagreen; padding-top: 6px">
-                        <b>eFifa <span style="font-size: xx-small; font-weight: bold">il</span>legal</b>
+                    <span align="center" style="font-size: 32px; color: skyblue; padding-top: 6px">
+                        <b>Porter - Internal Status Reporting</b>
                     </span>
                     <span style="float: right; padding-right: 6px; padding-top: 6px">
-                        <input class="btn btn-danger" style="background-color: inherit; font-weight: bold; color: seagreen" type="submit" value="Sign Out"/>
+                        <input class="btn btn-danger" style="background-color: inherit; font-weight: bold; color: skyblue" type="submit" value="Sign Out"/>
                     </span>
                 </form>
             </td>
@@ -34,11 +34,6 @@
                 <tabset justified="false">
                     <tab ng-repeat="tab in tabs" heading="{{tab.name}}" select="setActive($index)" />
                 </tabset>
-                <!--<ul class="nav nav-tabs" >
-                    <li ng-repeat="tab in tabs">
-                        <a ng-class="{active:$index==activeTab}" href class="btn ng-scope ng-binding" ng-click="setActive($index)">    {{tab.name}}  </a>
-                    </li>
-                </ul>-->
             </td>
         </tr>
         <tr style="vertical-align: top; height: 100%">
