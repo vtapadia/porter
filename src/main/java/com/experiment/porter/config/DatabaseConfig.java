@@ -1,6 +1,8 @@
 package com.experiment.porter.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
@@ -19,14 +21,24 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class DatabaseConfig {
 
+    @Value("${database.url}")
+    String databaseUrl;
+
+    @Value("${database.username}")
+    String databaseUsername;
+
+    @Value("${database.password}")
+    String databasePassword;
+
+
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
         //TODO find a way to set database values safely. May be, part of run configuration..
-        dataSource.setUrl("jdbc:oracle:thin:@XXX");
-        dataSource.setUsername("user");
-        dataSource.setPassword("password");
+        dataSource.setUrl(databaseUrl);
+        dataSource.setUsername(databaseUsername);
+        dataSource.setPassword(databasePassword);
         return dataSource;
     }
 

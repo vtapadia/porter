@@ -1,5 +1,6 @@
 package com.experiment.porter;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
@@ -17,20 +18,10 @@ import java.io.File;
         "com.experiment.porter"})
 public class PorterApp {
 
+    @Value("${db.pass}")
+    String testProp;
+
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(PorterApp.class, args);
-    }
-
-    @Bean
-    public EmbeddedServletContainerFactory servletContainer() {
-        JettyEmbeddedServletContainerFactory jetty = new JettyEmbeddedServletContainerFactory();
-        jetty.setContextPath("/porter");
-        jetty.setPort(88272);
-        try {
-            //jetty.setDocumentRoot(new File(""));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return jetty;
     }
 }

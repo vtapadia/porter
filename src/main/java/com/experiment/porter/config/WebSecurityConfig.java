@@ -37,12 +37,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication()
-                .usersByUsernameQuery("select user_id as username,password,'1' as enable from p_user where user_id=?")
-                .authoritiesByUsernameQuery("select user_id as username,role as authority from p_roles where user_id=?")
-                .dataSource(dataSource)
-                .passwordEncoder(passwordEncoder())
-        ;
+
+        auth.inMemoryAuthentication()
+                .withUser("vtapa").password("vtapa").roles("BASIC","TEAM_LEAD","MANAGER","ADMIN")
+                .and()
+                .withUser("magra").password("magra").roles("BASIC","TEAM_LEAD","ADMIN");
+
+//        auth.jdbcAuthentication()
+//                .usersByUsernameQuery("select user_id as username,password,'1' as enable from p_user where user_id=?")
+//                .authoritiesByUsernameQuery("select user_id as username,role as authority from p_roles where user_id=?")
+//                .dataSource(dataSource)
+//                .passwordEncoder(passwordEncoder())
+//        ;
     }
 
     @Bean
