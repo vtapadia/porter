@@ -12,14 +12,20 @@ import org.springframework.context.annotation.Configuration;
 
 import java.io.File;
 
+/**
+ * MAIN CLASS - Starts the application
+ *
+ * Following properties are required to be set
+ *  porter.environment : local/prod
+ *  porter.db.url : URL of the database
+ *  porter.db.username : self explanatory
+ *  porter.db.password : self explanatory
+ */
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {
         "com.experiment.porter"})
 public class PorterApp {
-
-    @Value("${db.pass}")
-    String testProp;
 
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(PorterApp.class, args);

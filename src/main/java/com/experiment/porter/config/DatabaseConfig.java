@@ -21,15 +21,14 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class DatabaseConfig {
 
-    @Value("${database.url}")
+    @Value("${porter.db.url}")
     String databaseUrl;
 
-    @Value("${database.username}")
+    @Value("${porter.db.username}")
     String databaseUsername;
 
-    @Value("${database.password}")
+    @Value("${porter.db.password}")
     String databasePassword;
-
 
     @Bean
     public DataSource dataSource() {
