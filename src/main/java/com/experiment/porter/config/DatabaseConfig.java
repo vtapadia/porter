@@ -21,6 +21,9 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class DatabaseConfig {
 
+    @Value("${porter.db:oracle}")
+    String database;
+
     @Value("${porter.db.url}")
     String databaseUrl;
 
@@ -33,8 +36,15 @@ public class DatabaseConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-        //TODO find a way to set database values safely. May be, part of run configuration..
+        switch (database) {
+            case "mysql":
+                //TODO Mysql supported to be implemented
+                break;
+            case "oracle":
+            default:
+                dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+                break;
+        }
         dataSource.setUrl(databaseUrl);
         dataSource.setUsername(databaseUsername);
         dataSource.setPassword(databasePassword);
@@ -53,7 +63,15 @@ public class DatabaseConfig {
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-        adapter.setDatabase(Database.ORACLE);
+        switch (database) {
+            case "mysql":
+                //TODO Mysql supported to be implemented
+                break;
+            case "oracle":
+            default:
+                adapter.setDatabase(Database.ORACLE);
+                break;
+        }
         adapter.setShowSql(false);
         adapter.setGenerateDdl(false);
         return adapter;

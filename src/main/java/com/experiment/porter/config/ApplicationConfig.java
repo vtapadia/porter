@@ -18,7 +18,7 @@ public class ApplicationConfig {
 
     Logger log = LoggerFactory.getLogger(ApplicationConfig.class);
 
-    @Value("${porter.enviroment}")
+    @Value("${porter.environment:local}")
     String environment;
 
     /**

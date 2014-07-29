@@ -16,7 +16,8 @@ import java.io.File;
  * MAIN CLASS - Starts the application
  *
  * Following properties are required to be set
- *  porter.environment : local/prod
+ *  porter.environment : (default:local) local/prod/test
+ *  porter.db : (default:oracle) oracle/mysql
  *  porter.db.url : URL of the database
  *  porter.db.username : self explanatory
  *  porter.db.password : self explanatory
