@@ -24,6 +24,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/index.html").permitAll()
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .antMatchers("/manager/**").hasAnyAuthority("ADMIN","MANAGER")
+                .antMatchers("/team/**").hasAnyAuthority("ADMIN","MANAGER","TEAM_LEAD")
                 .anyRequest().authenticated();
         http
                 .formLogin()
@@ -42,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("vtapa").password("vtapa").roles("BASIC","TEAM_LEAD","MANAGER","ADMIN")
                 .and()
                 .withUser("magra").password("magra").roles("BASIC","TEAM_LEAD","ADMIN");
-
+        System.out.println("vtapa password [" + passwordEncoder().encode("vtapa") + "]");
 //        auth.jdbcAuthentication()
 //                .usersByUsernameQuery("select user_id as username,password,'1' as enable from p_user where user_id=?")
 //                .authoritiesByUsernameQuery("select user_id as username,role as authority from p_roles where user_id=?")

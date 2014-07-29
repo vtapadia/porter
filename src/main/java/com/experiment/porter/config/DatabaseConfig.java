@@ -39,7 +39,7 @@ public class DatabaseConfig {
         switch (database) {
             case "mysql":
                 //TODO Mysql supported to be implemented
-                break;
+                //break;
             case "oracle":
             default:
                 dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
@@ -66,7 +66,7 @@ public class DatabaseConfig {
         switch (database) {
             case "mysql":
                 //TODO Mysql supported to be implemented
-                break;
+                //break;
             case "oracle":
             default:
                 adapter.setDatabase(Database.ORACLE);
